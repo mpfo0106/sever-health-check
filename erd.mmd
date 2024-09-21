@@ -1,0 +1,17 @@
+erDiagram
+    NOTIFICATIONS {
+        string channel_id PK "VARCHAR(255)"
+        datetime updated_at "DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    SERVER_HEALTH {
+        bigint id PK "BIGINT AUTO_INCREMENT"
+        string host_name "VARCHAR(255) UNIQUE NOT NULL"
+        string host "VARCHAR(255) NOT NULL"
+        int port "INT NOT NULL"
+        int type "INT NOT NULL"
+        boolean notification "TINYINT(1) NOT NULL DEFAULT 1"
+        string environment "ENUM('DEV', 'STAGE', 'LIVE', 'UNKNOWN') NOT NULL"
+        datetime created_at "TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+        datetime updated_at "TIMESTAMP NULL"
+    }

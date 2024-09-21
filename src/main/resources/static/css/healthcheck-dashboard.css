@@ -1,0 +1,39 @@
+body {
+    background-color: #1a1a2e;
+    color: #fff;
+}
+
+.table {
+    color: #fff;
+}
+
+.table-dark {
+    background-color: #16213e;
+}
+
+.btn-toggle {
+    width: 80px;
+}
+
+.modal-content {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.modal-header {
+    background-color: #007bff;
+    color: white;
+}
+
+.modal-body label {
+    color: #495057;
+}
+
+.modal-footer {
+    background-color: #e9ecef;
+}
+
+.form-control {
+    background-color: white;
+    color: #495057;
+}

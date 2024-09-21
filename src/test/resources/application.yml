@@ -1,0 +1,28 @@
+slack:
+  bot-token: exampleToken
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.H2Dialect
+
+
+logging:
+  level:
+    root: INFO
+healthcheck:
+  timeout: 5000 # 5초
+  interval: 30000 #30초
+  healthy-threshold: 3 # 3연속 성공시
+  unhealthy-threshold: 2 # 2연속 실패시
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

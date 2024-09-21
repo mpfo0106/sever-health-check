@@ -1,0 +1,33 @@
+slack:
+  bot-token: "bot-token"
+
+spring:
+  datasource:
+    url:
+    username: jdbc:mysql://url/project?useLegacyDatetimeCode=false
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    time-zone: Asia/Seoul
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        jdbc:
+          time_zone: Asia/Seoul
+
+logging:
+  level:
+    root: INFO
+healthcheck:
+  timeout: 5000 # 5초
+  interval: 30000 #30초
+  healthy-threshold: 3 # 3연속 성공시
+  unhealthy-threshold: 3 # 3연속 실패시
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

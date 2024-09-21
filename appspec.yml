@@ -1,0 +1,18 @@
+version: 0.0
+os: linux
+
+files:
+  # S3에 저장한 파일들 중 EC2로 이동시킬 대상 지정하기
+  - source: /
+    destination: /home/ubuntu/server-health
+
+permissions:
+  - object: /
+    owner: ubuntu
+    group: ubuntu
+
+hooks:
+  ApplicationStart:
+    - location: scripts/start-server.sh
+      timeout: 60
+      runas: ubuntu

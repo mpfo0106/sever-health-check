@@ -1,0 +1,29 @@
+sequenceDiagram
+    participant HCS as HealthCheckService
+    participant HCSS as HealthCheckStrategySelector
+    participant S as Strategy
+    participant SHS as ServerHealthService
+    participant SlackHS as SlackHookService
+    HCS ->> HCS: startHealthCheck()
+    HCS ->> SHS: getAllServers()
+    SHS -->> HCS: Return servers list
+
+    par For each server
+        HCS ->> HCS: checkServerHealthWithTimeout(server)
+        HCS ->> HCSS: selectStrategy(serverHealth)
+        HCSS -->> HCS: Return strategy
+        HCS ->> S: checkHealth(serverHealth)
+        alt Timeout occurs
+            HCS ->> HCS: Handle timeout
+        else No timeout
+            S -->> HCS: Return HealthCheckResultDto
+        end
+        HCS ->> HCS: updateServerStatus(serverHealth, healthCheckResult)
+        alt shouldRestoreStatus
+            HCS ->> HCS: handleRestoreStatus()
+            HCS ->> SlackHS: sendChannelIdMessage(restored)
+        else shouldBecomeUnhealthy
+            HCS ->> HCS: handleUnhealthyStatus()
+            HCS ->> SlackHS: sendChannelIdMessage(unhealthy)
+        end
+    end
