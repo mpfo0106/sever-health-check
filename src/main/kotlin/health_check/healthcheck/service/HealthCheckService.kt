@@ -1,16 +1,16 @@
 package health_check.healthcheck.service
 
-import kotlinx.coroutines.*
-import org.slf4j.LoggerFactory
-import org.springframework.beans.factory.annotation.Value
-import org.springframework.scheduling.annotation.Scheduled
-import org.springframework.stereotype.Service
 import health_check.common.error.exception.ErrorCode
 import health_check.healthcheck.dto.HealthCheckResultDto
 import health_check.healthcheck.model.ServerStatus
 import health_check.server.model.ServerHealth
 import health_check.server.service.ServerHealthService
 import health_check.slack.service.SlackHookService
+import kotlinx.coroutines.*
+import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Value
+import org.springframework.scheduling.annotation.Scheduled
+import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
 @Service
@@ -18,7 +18,7 @@ class HealthCheckService(
     private val healthCheckStrategySelector: HealthCheckStrategySelector,
     private val serverHealthService: ServerHealthService,
     private val slackHookService: SlackHookService,
-    @Value("\${healthcheck.timeout:10000}")
+    @Value("\${healthcheck.timeout:5000}")
     private val healthCheckTimeout: Long,
     @Value("\${healthcheck.healthy-threshold:3}")
     private val healthyThreshold: Int,

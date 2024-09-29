@@ -1,10 +1,12 @@
 # 서버 헬스체크 페이지
 
----
-
 ### 목표:
 
 서버의 상태를 실시간으로 모니터링하고 장애 발생 시 이를 알림 채널에 슬랙 메시지로 통보하는 시스템을 구축합니다.
+
+### 서비스 링크
+
+#### https://health-check.shop/
 
 ### 주요 기능:
 
@@ -52,10 +54,6 @@
 ---
 
 # 참고
-
-### 슬랙 메세지 템플릿을 바꾸고 싶다면
-
-- createTextMessage() 에서 수정하시면 됩니다.
 
 ### 슬랙 봇 필요한 권한
 
@@ -108,15 +106,15 @@ create table notifications
 
 ![](assets/ERD.png)
 
-# 배포 자동화
+# 아키텍처 구성도
 
-![](assets/githubActions_codeDeploy.png)
+![](assets/health-check_architecture.svg)
 
-- application.yml 은 github action secrets 중 APPLICATION_PROPERTIES 에 올려놓아야 이걸 가져와서 빌드한다!
-
-- code deploy 는 appspec.yml 을 읽고 scripts/start-server.sh 를 실행시켜 작동합니다
 
 # 헬스체크 로직 시퀀스 다이어그램
 
 ![](assets/healthCheckSequenceDiagram.png)
 
+# 트러블 슈팅 및 추가 설명 PDF
+
+![](assets/health-check.pdf)
