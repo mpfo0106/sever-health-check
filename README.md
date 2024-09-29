@@ -2,7 +2,9 @@
 
 ### 목표:
 
-서버의 상태를 실시간으로 모니터링하고 장애 발생 시 이를 알림 채널에 슬랙 메시지로 통보하는 시스템을 구축합니다.
+웹/웹소켓 서버의 상태를 실시간으로 모니터링하고 장애 발생/해결 시 이를 슬랙 채널에 알림을 통보하는 시스템을 구축합니다.
+
+본 프로젝트는 인턴 기간중 진행한 개인 프로젝트로 **회사 관련 코드를 제거한 뒤 허가를 받고 게시하였습니다.**
 
 ### 서비스 링크
 
@@ -55,7 +57,7 @@
 
 # 참고
 
-### 슬랙 봇 필요한 권한
+### 슬랙 봇에 필요한 권한
 
 ```
 - channels:read
@@ -110,11 +112,16 @@ create table notifications
 
 ![](assets/health-check_architecture.svg)
 
+# API 문서
+
+#### https://health-check.shop/swagger-ui/index.html
 
 # 헬스체크 로직 시퀀스 다이어그램
 
 ![](assets/healthCheckSequenceDiagram.png)
 
 # 트러블 슈팅 및 추가 설명 PDF
+
+- assets/health-check.pdf 에 첨부하였습니다.
 
 ![](assets/health-check.pdf)
